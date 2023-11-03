@@ -21,5 +21,14 @@ namespace UnitTests3
         }
 
 
+        [Test]
+        public void Wednesday()
+        {
+            string expectedResult = DayOfWeek.Wednesday.ToString();
+
+            string actualResult = SavaitesDienuPalyginimas.DienuPalyginimas();
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }
