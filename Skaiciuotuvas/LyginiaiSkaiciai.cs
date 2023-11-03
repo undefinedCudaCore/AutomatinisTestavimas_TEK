@@ -17,6 +17,7 @@ namespace Skaiciuotuvas
                 {
                     count++;
                 }
+
             }
             return count;
         }
