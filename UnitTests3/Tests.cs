@@ -39,5 +39,15 @@ namespace UnitTests3
 
             Assert.AreEqual(expectedResult, actualResult);
         }
+
+        [Test]
+        public void EvenNumbers()
+        {
+            int expectedResult = 4;
+
+            int actualResult = LyginiaiSkaiciai.Skaicius();
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }
