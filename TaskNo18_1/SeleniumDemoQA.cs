@@ -64,5 +64,46 @@ namespace TaskNo18_1
                 Assert.AreEqual(expectedOutput[i], actualOutput[i]);
             }
         }
+
+        [Test]
+        public void CheckEmailValidity()
+        {
+            //Create expected information variables
+            var expectedFullName = "MyNameIs";
+            var expectedEmail = "asd343&%^$#%.COM";
+            var expectedAdress = "Spoon street 98, London, United Kingdom";
+            var expectedPermanentAdress = "350 Lincoln Ave, San Jose, CA 95126, USA";
+            var expectedErrorClass = "mr-sm-2 field-error form-control";
+
+            //Open a web page.
+            IWebDriver driver = new ChromeDriver();
+            driver.Url = "https://demoqa.com/text-box";
+
+            //Fill in the input and text area information.
+            var inputEnterFullName = driver.FindElement(By.XPath("//*[@id='userName']"));
+            inputEnterFullName.SendKeys(expectedFullName);
+
+            var inputEnterEmail = driver.FindElement(By.XPath("//*[@id='userEmail']"));
+            inputEnterEmail.SendKeys(expectedEmail);
+
+            var inputEnterAdress = driver.FindElement(By.XPath("//*[@id='currentAddress']"));
+            inputEnterAdress.SendKeys(expectedAdress);
+
+            var inputEnterPermanentAdress = driver.FindElement(By.XPath("//*[@id='permanentAddress']"));
+            inputEnterPermanentAdress.SendKeys(expectedPermanentAdress);
+
+            //Submit information.
+            var buttonSubmitTextBox = driver.FindElement(By.XPath("//*[@id='submit']"));
+            buttonSubmitTextBox.Click();
+
+            //Create actual information
+            string actualOutput = driver.FindElement(By.XPath("//*[@id='userEmail']")).GetAttribute("Class");
+
+            //Quit browser
+            driver.Quit();
+
+            //Check the validity of the email.
+                Assert.AreEqual(expectedErrorClass, actualOutput);
+        }
     }
 }
